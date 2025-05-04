@@ -5,7 +5,7 @@
 
 template<typename T>
 class TPQueue {
-private:
+ private:
     struct ITEM {
         T data;
         ITEM* next;
@@ -14,7 +14,7 @@ private:
 
     ITEM* head;
 
-public:
+ public:
     TPQueue() : head(nullptr) {}
     void push(const T& value) {
         ITEM* newItem = new ITEM(value);
@@ -24,7 +24,8 @@ public:
             return;
         }
         ITEM* current = head;
-        while (current->next != nullptr && current->next->data.prior >= value.prior) {
+        while (current->next != nullptr &&
+            current->next->data.prior >= value.prior) {
             current = current->next;
         }
         newItem->next = current->next;
